@@ -1,7 +1,7 @@
 'use client'
 
 import { Menu, X, Globe } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
@@ -9,8 +9,19 @@ import { VendoraLogo } from '@/components/vendora-logo'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const { t, language, setLanguage } = useLanguage()
   const pathname = usePathname()
+
+  // Handle scroll event to change navbar appearance
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const toggleLanguage = () => {
     setLanguage(language === 'ar' ? 'en' : 'ar')
@@ -24,8 +35,14 @@ export function Navbar() {
   ]
 
   return (
-    <nav className="absolute top-0 left-0 w-full z-50 bg-transparent">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <nav 
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled 
+          ? 'bg-slate-950/80 backdrop-blur-md border-b border-white/10 py-3 shadow-lg shadow-black/20' 
+          : 'bg-transparent py-5'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
@@ -59,7 +76,11 @@ export function Navbar() {
             </button>
             <button 
               onClick={toggleLanguage}
-              className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors text-sm font-semibold px-2 py-1 rounded-md hover:bg-slate-800/50"
+              className={`flex items-center gap-2 transition-colors text-sm font-semibold px-2 py-1 rounded-md ${
+                scrolled 
+                  ? 'text-slate-300 hover:text-white hover:bg-white/10' 
+                  : 'text-slate-300 hover:text-white hover:bg-slate-800/50'
+              }`}
             >
               <Globe size={18} />
               {language === 'ar' ? 'EN' : 'عربي'}
