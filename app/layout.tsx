@@ -1,0 +1,70 @@
+import { Analytics } from '@vercel/analytics/next'
+import type { Metadata } from 'next'
+import { LanguageProvider } from '@/lib/i18n/LanguageContext'
+import { SmoothScroll } from '@/components/smooth-scroll'
+import './globals.css'
+
+export const metadata: Metadata = {
+  title: 'فندورا - أفضل نظام محاسبي ونقاط بيع (ERP)',
+  description: 'نظام فندورا (Vendora) هو الحل المتكامل لإدارة المخازن، المبيعات، ونقاط البيع السحابية. صمم خصيصاً ليناسب نمو أعمالك مهما كان حجمها.',
+  generator: 'v0.app',
+  icons: {
+    icon: [
+      {
+        url: '/icon-light-32x32.png',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/icon-dark-32x32.png',
+        media: '(prefers-color-scheme: dark)',
+      },
+      {
+        url: '/icon.svg',
+        type: 'image/svg+xml',
+      },
+    ],
+    apple: '/apple-icon.png',
+  },
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  // SEO Schema Definition
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Vendora ERP - فندورا',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Any',
+    offers: {
+      '@type': 'Offer',
+      price: '499',
+      priceCurrency: 'EGP',
+    },
+    description: 'نظام سحابي متكامل لإدارة الأعمال، المخزون، ونقاط البيع للمحلات والشركات.',
+  }
+
+  return (
+    <html lang="ar" dir="rtl" className="dark bg-background" suppressHydrationWarning>
+      <head>
+        <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body className="font-sans antialiased bg-background text-foreground">
+        <SmoothScroll>
+          <LanguageProvider>
+            {children}
+            {process.env.NODE_ENV === 'production' && <Analytics />}
+          </LanguageProvider>
+        </SmoothScroll>
+      </body>
+    </html>
+  )
+}
