@@ -101,7 +101,7 @@ export function PricingSection() {
 
         {/* Pricing Cards Grid */}
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-8 items-center"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-8 items-stretch"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -119,27 +119,29 @@ export function PricingSection() {
               <motion.div
                 key={index}
                 variants={cardVariants}
-                className={`relative group transition-all duration-500 ${
+                className={`relative group transition-all duration-500 h-full flex ${
                   plan.highlighted 
                     ? 'md:-translate-y-4 md:z-10'
                     : ''
                 }`}
               >
                 {/* Highlighted Card Glow Effect */}
-                {plan.highlighted && (
+                {plan.highlighted ? (
                   <motion.div 
-                    className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-500 rounded-3xl blur-xl opacity-40 group-hover:opacity-70 transition-opacity duration-500" 
+                    className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-500 rounded-[2rem] blur-xl opacity-40 group-hover:opacity-70 transition-opacity duration-500" 
                     animate={{ scale: [1, 1.02, 1], opacity: [0.4, 0.6, 0.4] }}
                     transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
                   />
+                ) : (
+                  <div className="absolute -inset-[1px] bg-gradient-to-b from-slate-700 to-slate-800 rounded-[2rem] opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
                 )}
 
                 {/* Card Container */}
                 <div
-                  className={`relative h-full flex flex-col rounded-3xl border backdrop-blur-xl transition-all duration-300 ${
+                  className={`relative w-full flex flex-col rounded-[2rem] backdrop-blur-xl transition-all duration-300 ${
                     plan.highlighted
-                      ? 'border-indigo-500/50 bg-slate-900/90 shadow-2xl shadow-indigo-500/20'
-                      : 'border-slate-800 bg-slate-900/50 hover:border-slate-700 hover:bg-slate-900/80'
+                      ? 'bg-slate-900/90 shadow-2xl shadow-indigo-500/20 border border-indigo-500/50'
+                      : 'bg-slate-900 shadow-xl border border-transparent'
                   }`}
                 >
                   {/* Most Popular Badge */}
@@ -152,7 +154,7 @@ export function PricingSection() {
                   )}
 
                   {/* Content */}
-                  <div className="p-8 md:p-10">
+                  <div className="p-8 md:p-10 flex-1 flex flex-col">
                     {/* Plan Name and Description */}
                     <h3 className={`text-2xl font-bold mb-2 ${plan.highlighted ? 'text-white' : 'text-slate-200'}`}>
                       {plan.name}
@@ -182,21 +184,21 @@ export function PricingSection() {
                       className={`w-full mb-10 py-4 rounded-xl font-bold text-lg transition-all duration-300 ${
                         plan.highlighted
                           ? 'bg-gradient-to-r from-indigo-500 to-cyan-500 text-white hover:shadow-[0_0_20px_-5px_rgba(99,102,241,0.5)] hover:scale-105'
-                          : 'bg-slate-800 text-white hover:bg-slate-700 hover:scale-105'
+                          : 'bg-slate-800 text-white hover:bg-slate-700 hover:scale-105 border border-slate-700/50'
                       }`}
                     >
                       {plan.cta}
                     </button>
 
                     {/* Features List */}
-                    <div className="space-y-6">
+                    <div className="space-y-6 flex-1">
                       <p className="text-sm font-bold text-slate-300 uppercase tracking-wider">
                         {t.pricing.whats_included}
                       </p>
                       <ul className="space-y-4">
                         {plan.features.map((feature, featureIndex) => (
                           <li key={featureIndex} className="flex items-start gap-3">
-                            <div className={`mt-1 p-0.5 rounded-full ${plan.highlighted ? 'bg-indigo-500/20' : 'bg-slate-800'}`}>
+                            <div className={`mt-1 p-0.5 rounded-full flex-shrink-0 ${plan.highlighted ? 'bg-indigo-500/20' : 'bg-slate-800'}`}>
                               <Check 
                                 className={`w-4 h-4 ${plan.highlighted ? 'text-cyan-400' : 'text-slate-400'}`} 
                                 strokeWidth={3}
@@ -214,12 +216,70 @@ export function PricingSection() {
           })}
         </motion.div>
 
+        {/* Feature Comparison Table */}
+        <motion.div 
+          className="mt-32 max-w-5xl mx-auto hidden md:block"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-white mb-4">{t.pricing.compare.title}</h3>
+          </div>
+          
+          <div className="bg-slate-900/50 backdrop-blur-md rounded-3xl border border-slate-800 overflow-hidden">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="border-b border-slate-800">
+                  <th className="py-6 px-8 text-slate-400 font-medium w-1/4">{t.pricing.compare.features}</th>
+                  <th className="py-6 px-8 text-center text-slate-200 font-bold w-1/4 text-lg">{t.pricing.plans.starter.name}</th>
+                  <th className="py-6 px-8 text-center text-cyan-400 font-bold w-1/4 text-lg bg-slate-800/20">{t.pricing.plans.professional.name}</th>
+                  <th className="py-6 px-8 text-center text-slate-200 font-bold w-1/4 text-lg">{t.pricing.plans.enterprise.name}</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-800/50">
+                {t.pricing.compare.items.map((item, idx) => (
+                  <tr key={idx} className="hover:bg-slate-800/30 transition-colors">
+                    <td className="py-5 px-8 text-slate-300 font-medium">{item.name}</td>
+                    <td className="py-5 px-8 text-center text-slate-400">{item.starter}</td>
+                    <td className="py-5 px-8 text-center text-cyan-300 font-medium bg-slate-800/10">{item.pro}</td>
+                    <td className="py-5 px-8 text-center text-slate-400">{item.ent}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </motion.div>
+
+        {/* FAQ Section */}
+        <motion.div 
+          className="mt-32 max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-white">{t.pricing.faq.title}</h3>
+          </div>
+          
+          <div className="space-y-4">
+            {t.pricing.faq.items.map((item, idx) => (
+              <div key={idx} className="bg-slate-900/50 backdrop-blur-md border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-colors">
+                <h4 className="text-lg font-bold text-white mb-2">{item.q}</h4>
+                <p className="text-slate-400">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
         {/* Bottom CTA */}
         <motion.div 
-          className="text-center mt-20"
+          className="text-center mt-32"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
           <p className="text-slate-400 mb-2 font-medium">

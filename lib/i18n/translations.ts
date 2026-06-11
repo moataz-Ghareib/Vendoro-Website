@@ -132,6 +132,31 @@ export const translations = {
           features: ["عدد غير محدود من الفروع", "وصول برمجي (API) للربط الخارجي", "مدير حسابات مخصص لشركتك", "إعداد وتخصيص مسارات العمل", "تحليلات ذكية للمديرين", "دعم فني استثنائي 24/7"],
           cta: "تواصل معنا لتخصيص باقتك"
         }
+      },
+      compare: {
+        title: "قارن بين الباقات",
+        features: "المميزات",
+        core: "الميزات الأساسية",
+        inventory: "إدارة المخزون",
+        support: "الدعم الفني",
+        items: [
+          { name: "عدد الفروع", starter: "فرع واحد", pro: "حتى 3 فروع", ent: "غير محدود", category: "core" },
+          { name: "المستخدمين", starter: "2", pro: "غير محدود", ent: "غير محدود", category: "core" },
+          { name: "نظام نقاط البيع", starter: "أساسي", pro: "متقدم", ent: "مخصص", category: "core" },
+          { name: "محافظ حسابات آلية", starter: "❌", pro: "✅", ent: "✅", category: "core" },
+          { name: "خصائص ديناميكية (JSON)", starter: "❌", pro: "✅", ent: "✅", category: "inventory" },
+          { name: "تتبع الأرقام التسلسلية (IMEI)", starter: "❌", pro: "✅", ent: "✅", category: "inventory" },
+          { name: "وصول API", starter: "❌", pro: "❌", ent: "✅", category: "inventory" },
+          { name: "دعم فني", starter: "عبر البريد", pro: "أولوية + هاتف", ent: "مدير حسابات 24/7", category: "support" }
+        ]
+      },
+      faq: {
+        title: "الأسئلة الشائعة",
+        items: [
+          { q: "هل أحتاج لأجهزة معينة لتشغيل فندورا؟", a: "لا، فندورا نظام سحابي يعمل على أي جهاز متصل بالإنترنت (لابتوب، تابلت، جوال)." },
+          { q: "هل يمكنني الترقية أو الإلغاء لاحقاً؟", a: "نعم، يمكنك ترقية باقتك أو إلغائها في أي وقت بدون رسوم خفية." },
+          { q: "هل بياناتي المالية آمنة؟", a: "بالتأكيد. نستخدم تشفير بدرجة بنكية (256-bit encryption) وبياناتك محفوظة في سيرفرات سحابية عالمية." }
+        ]
       }
     },
     contact: {
@@ -333,6 +358,31 @@ export const translations = {
           features: ["Unlimited Branches", "API Access for Integrations", "Dedicated Account Manager", "Custom Workflows", "Smart Manager Analytics", "24/7 Premium Support"],
           cta: "Contact Us to Customize"
         }
+      },
+      compare: {
+        title: "Compare Plans",
+        features: "Features",
+        core: "Core Features",
+        inventory: "Inventory Management",
+        support: "Support",
+        items: [
+          { name: "Branches", starter: "1 Branch", pro: "Up to 3", ent: "Unlimited", category: "core" },
+          { name: "Users", starter: "2", pro: "Unlimited", ent: "Unlimited", category: "core" },
+          { name: "POS System", starter: "Basic", pro: "Advanced", ent: "Custom", category: "core" },
+          { name: "Auto Ledger Wallets", starter: "❌", pro: "✅", ent: "✅", category: "core" },
+          { name: "Dynamic Schema (JSON)", starter: "❌", pro: "✅", ent: "✅", category: "inventory" },
+          { name: "IMEI / Serial Tracking", starter: "❌", pro: "✅", ent: "✅", category: "inventory" },
+          { name: "API Access", starter: "❌", pro: "❌", ent: "✅", category: "inventory" },
+          { name: "Support Level", starter: "Email", pro: "Priority + Phone", ent: "24/7 Account Manager", category: "support" }
+        ]
+      },
+      faq: {
+        title: "Frequently Asked Questions",
+        items: [
+          { q: "Do I need special hardware?", a: "No, Vendora is cloud-based and works on any device with a browser (PC, Tablet, Mobile)." },
+          { q: "Can I upgrade or cancel anytime?", a: "Yes, you can upgrade your plan or cancel your subscription at any time with no hidden fees." },
+          { q: "Is my financial data secure?", a: "Absolutely. We use bank-grade 256-bit encryption, and your data is stored in world-class cloud servers." }
+        ]
       }
     },
     contact: {

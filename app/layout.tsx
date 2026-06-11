@@ -2,7 +2,19 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
 import { LanguageProvider } from '@/lib/i18n/LanguageContext'
 import { SmoothScroll } from '@/components/smooth-scroll'
+import { Tajawal, Open_Sans } from 'next/font/google'
 import './globals.css'
+
+const tajawal = Tajawal({ 
+  subsets: ['arabic'], 
+  weight: ['300', '400', '500', '700', '800', '900'],
+  variable: '--font-tajawal'
+})
+
+const openSans = Open_Sans({ 
+  subsets: ['latin'],
+  variable: '--font-open-sans'
+})
 
 export const metadata: Metadata = {
   title: 'فندورا - أفضل نظام محاسبي ونقاط بيع (ERP)',
@@ -48,7 +60,7 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="ar" dir="rtl" className="dark bg-background" suppressHydrationWarning>
+    <html lang="ar" dir="rtl" className={`dark bg-background ${tajawal.variable} ${openSans.variable}`} suppressHydrationWarning>
       <head>
         <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -57,7 +69,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="font-sans antialiased bg-background text-foreground">
+      <body className="font-sans antialiased bg-background text-foreground transition-colors duration-300">
         <SmoothScroll>
           <LanguageProvider>
             {children}
