@@ -11,7 +11,8 @@ export const translations = {
     home_stats: {
       transactions: "عملية يومية",
       brands: "علامة تجارية",
-      uptime: "جاهزية وأمان"
+      uptime: "جاهزية وأمان",
+      invoices: "فاتورة مُصدرة"
     },
     trust_marquee: {
       title: "نظام يثق به كبار صناع التجارة",
@@ -237,7 +238,8 @@ export const translations = {
     home_stats: {
       transactions: "Daily Tx",
       brands: "Premium Brands",
-      uptime: "Uptime"
+      uptime: "Uptime",
+      invoices: "Issued Invoices"
     },
     trust_marquee: {
       title: "Trusted by premium brands around the world",

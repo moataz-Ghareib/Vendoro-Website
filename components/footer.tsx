@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Mail, Share2, Send } from 'lucide-react'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
+import { VendoraLogo } from '@/components/vendora-logo'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -41,12 +42,7 @@ export function Footer() {
           {/* Brand */}
           <motion.div variants={itemVariants} className="col-span-1 md:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6 group inline-flex">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-cyan-500/20 group-hover:shadow-cyan-500/40 transition-shadow duration-300">
-                <span className="text-white font-black text-xl tracking-tighter group-hover:scale-110 transition-transform duration-300">V</span>
-              </div>
-              <span className="text-2xl font-black bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
-                Vendora
-              </span>
+              <VendoraLogo />
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
               {t.footer.description}

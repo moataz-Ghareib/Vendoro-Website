@@ -17,25 +17,12 @@ const openSans = Open_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'فندورا - أفضل نظام محاسبي ونقاط بيع (ERP)',
-  description: 'نظام فندورا (Vendora) هو الحل المتكامل لإدارة المخازن، المبيعات، ونقاط البيع السحابية. صمم خصيصاً ليناسب نمو أعمالك مهما كان حجمها.',
-  generator: 'v0.app',
+  title: 'Vendora - أفضل نظام محاسبي ونقاط بيع (ERP)',
+  description: 'نظام Vendora هو الحل المتكامل لإدارة المخازن، المبيعات، ونقاط البيع السحابية. صمم خصيصاً ليناسب نمو أعمالك مهما كان حجمها.',
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
   },
 }
 

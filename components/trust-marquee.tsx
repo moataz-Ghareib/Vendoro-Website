@@ -13,37 +13,37 @@ export function TrustMarquee() {
     <section className="py-24 bg-slate-950 overflow-hidden relative border-t border-white/5">
       <div className="absolute inset-0 bg-gradient-to-b from-indigo-900/5 to-transparent pointer-events-none" />
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 relative z-10 text-center">
-        <motion.h2 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 relative z-10 text-center">
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-bold text-white mb-4"
+          className="text-4xl sm:text-5xl md:text-6xl font-black text-cyan-500 mb-6 tracking-tight"
         >
           {t.trust_marquee.title}
-        </motion.h2>
+        </motion.h1>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-slate-400"
+          className="text-lg sm:text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed"
         >
           {t.trust_marquee.subtitle}
         </motion.p>
       </div>
 
       <div className="relative flex overflow-x-hidden">
-        <div className="animate-marquee whitespace-nowrap flex items-center gap-16 md:gap-32 py-12">
+        <div className="animate-marquee whitespace-nowrap flex items-center gap-24 md:gap-40 py-12">
           {brands.map((brand, i) => (
-            <span key={i} className="text-2xl md:text-3xl font-black text-slate-700 tracking-widest uppercase hover:text-slate-500 transition-colors">
+            <span key={i} className="text-4xl sm:text-5xl md:text-7xl font-black text-slate-800 tracking-[0.2em] uppercase hover:text-slate-600 transition-colors duration-500">
               {brand}
             </span>
           ))}
         </div>
-        <div className="absolute top-0 animate-marquee2 whitespace-nowrap flex items-center gap-16 md:gap-32 py-12">
+        <div className="absolute top-0 animate-marquee2 whitespace-nowrap flex items-center gap-24 md:gap-40 py-12">
           {brands.map((brand, i) => (
-            <span key={i} className="text-2xl md:text-3xl font-black text-slate-700 tracking-widest uppercase hover:text-slate-500 transition-colors">
+            <span key={i} className="text-4xl sm:text-5xl md:text-7xl font-black text-slate-800 tracking-[0.2em] uppercase hover:text-slate-600 transition-colors duration-500">
               {brand}
             </span>
           ))}
