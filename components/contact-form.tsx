@@ -138,6 +138,7 @@ export function ContactForm() {
                   value={formData.email}
                   onChange={handleChange}
                   required
+                  suppressHydrationWarning
                   placeholder={t.contact.form.email_placeholder}
                   className="w-full px-5 py-4 rounded-xl border border-slate-600 bg-slate-800/60 text-white placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/30 transition-all duration-300 hover:border-slate-500"
                 />

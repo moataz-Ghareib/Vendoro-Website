@@ -74,8 +74,8 @@ export function Footer() {
             <ul className="space-y-4">
               {[
                 { key: 'about', path: '/about' },
-                { key: 'blog', path: '#' },
-                { key: 'careers', path: '#' },
+                { key: 'blog', path: '/blog' },
+                { key: 'careers', path: '/careers' },
                 { key: 'contact', path: '/about#contact' }
               ].map((item) => (
                 <li key={item.key}>
@@ -91,9 +91,9 @@ export function Footer() {
           <motion.div variants={itemVariants}>
             <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">{t.footer.legal}</h4>
             <ul className="space-y-4">
-              {['privacy', 'terms', 'cookies', 'gdpr'].map((item) => (
+              {['privacy', 'terms'].map((item) => (
                 <li key={item}>
-                  <Link href={`#${item}`} className="text-sm font-medium text-slate-400 hover:text-cyan-400 hover:translate-x-1 inline-block transition-all duration-300">
+                  <Link href={`/${item}`} className="text-sm font-medium text-slate-400 hover:text-cyan-400 hover:translate-x-1 inline-block transition-all duration-300">
                     {t.footer.links[item as keyof typeof t.footer.links]}
                   </Link>
                 </li>

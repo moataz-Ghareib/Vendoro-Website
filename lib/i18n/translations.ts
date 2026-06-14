@@ -198,9 +198,7 @@ export const translations = {
         careers: "انضم لفريقنا",
         contact: "اتصل بنا",
         privacy: "سياسة الخصوصية",
-        terms: "شروط الاستخدام",
-        cookies: "ملفات الارتباط (Cookies)",
-        gdpr: "الامتثال للأنظمة"
+        terms: "شروط الاستخدام"
       },
       rights: "فندورا. جميع الحقوق محفوظة."
     },
@@ -425,9 +423,7 @@ export const translations = {
         careers: "Join Our Team",
         contact: "Contact Us",
         privacy: "Privacy Policy",
-        terms: "Terms of Use",
-        cookies: "Cookie Policy",
-        gdpr: "Compliance"
+        terms: "Terms of Use"
       },
       rights: "Vendora. All rights reserved."
     },

@@ -71,9 +71,9 @@ export function Navbar() {
 
           {/* CTA and Language */}
           <div className="flex items-center gap-4">
-            <button className="hidden sm:block px-6 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-medium text-sm hover:opacity-90 transition-all hover:shadow-lg hover:shadow-cyan-500/25">
+            <Link href="/pricing" className="hidden sm:block px-6 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-medium text-sm hover:opacity-90 transition-all hover:shadow-lg hover:shadow-cyan-500/25">
               {t.hero.start_btn}
-            </button>
+            </Link>
             <button 
               onClick={toggleLanguage}
               className={`flex items-center gap-2 transition-colors text-sm font-semibold px-2 py-1 rounded-md ${
@@ -109,9 +109,9 @@ export function Navbar() {
                 </Link>
               )
             })}
-            <button className="w-full mt-2 px-6 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-bold text-base hover:opacity-90 transition-all">
+            <Link onClick={() => setIsOpen(false)} href="/pricing" className="w-full mt-2 px-6 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-bold text-base hover:opacity-90 transition-all text-center">
               {t.hero.start_btn}
-            </button>
+            </Link>
           </div>
         )}
       </div>

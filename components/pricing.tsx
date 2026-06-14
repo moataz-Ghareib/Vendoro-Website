@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Check } from 'lucide-react'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
 
 export function PricingSection() {
@@ -180,15 +181,16 @@ export function PricingSection() {
                     </div>
 
                     {/* CTA Button */}
-                    <button
-                      className={`w-full mb-10 py-4 rounded-xl font-bold text-lg transition-all duration-300 ${
+                    <Link
+                      href="/about"
+                      className={`w-full mb-10 py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center ${
                         plan.highlighted
                           ? 'bg-gradient-to-r from-indigo-500 to-cyan-500 text-white hover:shadow-[0_0_20px_-5px_rgba(99,102,241,0.5)] hover:scale-105'
                           : 'bg-slate-800 text-white hover:bg-slate-700 hover:scale-105 border border-slate-700/50'
                       }`}
                     >
                       {plan.cta}
-                    </button>
+                    </Link>
 
                     {/* Features List */}
                     <div className="space-y-6 flex-1">
@@ -286,7 +288,7 @@ export function PricingSection() {
             {t.pricing.footer_text}
           </p>
           <p className="text-slate-400 font-medium">
-            {t.pricing.custom_plan_text} <a href="#contact" className="text-cyan-400 hover:text-cyan-300 hover:underline transition-colors">{t.pricing.contact_sales}</a>
+            {t.pricing.custom_plan_text} <Link href="/about" className="text-cyan-400 hover:text-cyan-300 hover:underline transition-colors">{t.pricing.contact_sales}</Link>
           </p>
         </motion.div>
       </div>

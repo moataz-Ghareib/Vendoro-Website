@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { Barcode, Clock, Package, Zap } from 'lucide-react'
 import { useState } from 'react'
+import Link from 'next/link'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
 
 const icons = {
@@ -130,14 +131,16 @@ export function SolutionsSection() {
                   ))}
                 </div>
 
-                <motion.button 
+                <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
-                  className={`mt-10 px-8 py-4 rounded-xl bg-gradient-to-r ${color} text-white font-bold text-lg hover:shadow-[0_0_30px_-5px_rgba(255,255,255,0.4)] transition-all hover:-translate-y-1 flex items-center gap-2`}
+                  className="mt-10"
                 >
-                  {t.solutions.learn_more}
-                </motion.button>
+                  <Link href={`/solutions/${activeSolution.id}`} className={`inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r ${color} text-white font-bold text-lg hover:shadow-[0_0_30px_-5px_rgba(255,255,255,0.4)] transition-all hover:-translate-y-1`}>
+                    {t.solutions.learn_more}
+                  </Link>
+                </motion.div>
               </div>
 
               {/* Advanced 3D Visual Preview */}
