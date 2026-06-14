@@ -8,22 +8,28 @@ import { useLanguage } from '@/lib/i18n/LanguageContext'
 
 export function PricingSection() {
   const [isAnnual, setIsAnnual] = useState(false)
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
 
   const pricingPlans = [
     {
       ...t.pricing.plans.starter,
-      monthlyPrice: 999,
+      monthlyPrice: 300,
+      annualPrice: 2200,
+      isCustom: false,
       highlighted: false,
     },
     {
       ...t.pricing.plans.professional,
-      monthlyPrice: 2499,
+      monthlyPrice: 600,
+      annualPrice: 3000,
+      isCustom: false,
       highlighted: true,
     },
     {
       ...t.pricing.plans.enterprise,
-      monthlyPrice: 4999,
+      monthlyPrice: 0,
+      annualPrice: 0,
+      isCustom: true,
       highlighted: false,
     }
   ]
@@ -109,13 +115,13 @@ export function PricingSection() {
           viewport={{ once: true, margin: "-100px" }}
         >
           {pricingPlans.map((plan, index) => {
-            const pricePerMonth = isAnnual 
-              ? Math.round(plan.monthlyPrice * 0.8)
+            const displayPrice = isAnnual 
+              ? plan.annualPrice
               : plan.monthlyPrice
             
-            const displayAnnualTotal = isAnnual 
-              ? pricePerMonth * 12
-              : 0
+            const monthlyEquivalent = isAnnual && plan.annualPrice
+              ? Math.round(plan.annualPrice / 12)
+              : plan.monthlyPrice
 
             return (
               <motion.div
@@ -164,26 +170,37 @@ export function PricingSection() {
                     <p className="text-sm text-slate-400 mb-8 h-10">{plan.description}</p>
 
                     {/* Price */}
-                    <div className="mb-8">
-                      <div className="flex items-baseline gap-2">
-                        <span className={`text-5xl font-black tracking-tight ${plan.highlighted ? 'text-white' : 'text-slate-200'}`}>
-                          {pricePerMonth.toLocaleString()}
-                        </span>
-                        <span className="text-slate-400 font-medium">
-                          {t.pricing.currency} / {t.pricing.monthly}
-                        </span>
-                      </div>
-                      {isAnnual && (
-                        <p className="text-sm text-indigo-400 font-medium mt-3">
-                          {t.pricing.billed_annually} ({displayAnnualTotal.toLocaleString()} {t.pricing.currency})
-                        </p>
+                    <div className="mb-8 h-[92px] flex flex-col justify-end">
+                      {plan.isCustom ? (
+                        <div className="flex items-baseline gap-2 mb-4">
+                          <span className={`text-4xl font-black tracking-tight ${plan.highlighted ? 'text-white' : 'text-slate-200'}`}>
+                            {language === 'ar' ? 'سعر مخصص' : 'Custom Price'}
+                          </span>
+                        </div>
+                      ) : (
+                        <>
+                          <div className="flex items-baseline gap-2">
+                            <span className={`text-5xl font-black tracking-tight ${plan.highlighted ? 'text-white' : 'text-slate-200'}`}>
+                              {displayPrice.toLocaleString()}
+                            </span>
+                            <span className="text-slate-400 font-medium">
+                              {t.pricing.currency} / {isAnnual ? t.pricing.annually : t.pricing.monthly}
+                            </span>
+                          </div>
+                          {isAnnual ? (
+                            <p className="text-sm text-indigo-400 font-medium mt-3">
+                              {language === 'ar' ? `يعادل ${monthlyEquivalent} ج.م شهرياً` : `Equivalent to ${monthlyEquivalent} EGP / month`}
+                            </p>
+                          ) : (
+                            <div className="h-5 mt-3" />
+                          )}
+                        </>
                       )}
-                      {!isAnnual && <div className="h-5 mt-3" />}
                     </div>
 
                     {/* CTA Button */}
                     <Link
-                      href="/about"
+                      href="#contact"
                       className={`w-full mb-10 py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center ${
                         plan.highlighted
                           ? 'bg-gradient-to-r from-indigo-500 to-cyan-500 text-white hover:shadow-[0_0_20px_-5px_rgba(99,102,241,0.5)] hover:scale-105'

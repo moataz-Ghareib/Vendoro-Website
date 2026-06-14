@@ -124,13 +124,13 @@ export const translations = {
         professional: {
           name: "النمو",
           description: "مثالية للمشاريع المتنامية والتي تمتلك أكثر من فرع",
-          features: ["حتى 3 فروع", "حسابات خزن ومطابقة يومية", "إدارة متقدمة للمخزون والتصنيع", "تقارير شيفتات متطورة (Z-Reports)", "صلاحيات مفصلة للمستخدمين", "دعم فني سريع عبر الواتساب"],
+          features: ["حتى 3 فروع (قابل للزيادة)", "جميع مميزات باقة البداية", "إدارة متقدمة للمخزون والتصنيع", "وصول برمجي (API) للربط الخارجي", "إعداد وتخصيص مسارات العمل", "تحليلات ذكية للمديرين", "مدير حسابات مخصص ودعم 24/7"],
           cta: "اختر باقة النمو"
         },
         enterprise: {
           name: "المؤسسات",
           description: "للشركات الكبرى وسلاسل المتاجر الكبيرة",
-          features: ["عدد غير محدود من الفروع", "وصول برمجي (API) للربط الخارجي", "مدير حسابات مخصص لشركتك", "إعداد وتخصيص مسارات العمل", "تحليلات ذكية للمديرين", "دعم فني استثنائي 24/7"],
+          features: ["عدد غير محدود من الفروع", "جميع مميزات باقة النمو كاملة", "استضافة خاصة (Dedicated Server)", "وصول برمجي (API) للربط الخارجي", "إعداد وتخصيص مسارات العمل", "تحليلات ذكية للمديرين", "مدير حسابات مخصص ودعم 24/7"],
           cta: "تواصل معنا لتخصيص باقتك"
         }
       },
@@ -349,13 +349,13 @@ export const translations = {
         professional: {
           name: "Growth",
           description: "Ideal for growing businesses with multiple locations",
-          features: ["Up to 3 Branches", "Daily Cash Reconciliation", "Advanced Inventory & Manufacturing", "Detailed Z-Reports", "Granular User Permissions", "Priority WhatsApp Support"],
+          features: ["Up to 3 Branches (Expandable)", "All Starter features included", "Advanced Inventory & Manufacturing", "API Access for Integrations", "Custom Workflows Setup", "Smart Manager Analytics", "Dedicated Account Manager & 24/7 Support"],
           cta: "Choose Growth Plan"
         },
         enterprise: {
           name: "Enterprise",
           description: "For large companies and retail chains",
-          features: ["Unlimited Branches", "API Access for Integrations", "Dedicated Account Manager", "Custom Workflows", "Smart Manager Analytics", "24/7 Premium Support"],
+          features: ["Unlimited Branches & Users", "All Growth features included", "Dedicated Server Hosting", "API Access for Integrations", "Custom Workflows Setup", "Smart Manager Analytics", "Dedicated Account Manager & 24/7 Support"],
           cta: "Contact Us to Customize"
         }
       },
