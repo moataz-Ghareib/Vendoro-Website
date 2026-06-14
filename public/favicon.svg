@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#4f46e5;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-  <rect width="100" height="100" rx="25" fill="url(#grad)" />
-  <text x="50" y="70" font-family="sans-serif" font-weight="900" font-size="60" fill="white" text-anchor="middle">V</text>
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    path.outer { stroke: #0f172a; }
+    @media (prefers-color-scheme: dark) {
+      path.outer { stroke: #ffffff; filter: drop-shadow(0px 0px 8px rgba(99,102,241,0.8)); }
+    }
+  </style>
+  <path class="outer" d="M15 15 L50 85 L85 15" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M35 15 L50 45 L65 15" stroke="#6366F1" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
 </svg>
