@@ -13,17 +13,17 @@ export function PricingSection() {
   const pricingPlans = [
     {
       ...t.pricing.plans.starter,
-      monthlyPrice: 499,
+      monthlyPrice: 999,
       highlighted: false,
     },
     {
       ...t.pricing.plans.professional,
-      monthlyPrice: 999,
+      monthlyPrice: 2499,
       highlighted: true,
     },
     {
       ...t.pricing.plans.enterprise,
-      monthlyPrice: 1999,
+      monthlyPrice: 4999,
       highlighted: false,
     }
   ]
@@ -109,12 +109,13 @@ export function PricingSection() {
           viewport={{ once: true, margin: "-100px" }}
         >
           {pricingPlans.map((plan, index) => {
-            const displayPrice = isAnnual 
-              ? Math.round(plan.monthlyPrice * 12 * 0.8)
-              : plan.monthlyPrice
             const pricePerMonth = isAnnual 
-              ? Math.round(displayPrice / 12)
-              : displayPrice
+              ? Math.round(plan.monthlyPrice * 0.8)
+              : plan.monthlyPrice
+            
+            const displayAnnualTotal = isAnnual 
+              ? pricePerMonth * 12
+              : 0
 
             return (
               <motion.div
@@ -169,12 +170,12 @@ export function PricingSection() {
                           {pricePerMonth.toLocaleString()}
                         </span>
                         <span className="text-slate-400 font-medium">
-                          {t.pricing.currency} / {isAnnual ? t.pricing.annually : t.pricing.monthly}
+                          {t.pricing.currency} / {t.pricing.monthly}
                         </span>
                       </div>
                       {isAnnual && (
                         <p className="text-sm text-indigo-400 font-medium mt-3">
-                          {t.pricing.billed_annually} ({displayPrice.toLocaleString()} {t.pricing.currency})
+                          {t.pricing.billed_annually} ({displayAnnualTotal.toLocaleString()} {t.pricing.currency})
                         </p>
                       )}
                       {!isAnnual && <div className="h-5 mt-3" />}
