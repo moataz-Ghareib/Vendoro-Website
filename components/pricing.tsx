@@ -21,7 +21,7 @@ export function PricingSection() {
     {
       ...t.pricing.plans.professional,
       monthlyPrice: 600,
-      annualPrice: 3700,
+      annualPrice: 3500,
       isCustom: false,
       highlighted: true,
     },
